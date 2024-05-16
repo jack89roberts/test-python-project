@@ -361,12 +361,10 @@ def create_data_splits(
             )
 
         raise ValueError(
-            (
-                "One of val_split or test_split should exist in the dataset dict. "
-                f"val_split was {val_split}. "
-                f"test_split was {test_split}. "
-                f"DatasetDict keys were {dataset.keys()}"
-            )
+            "One of val_split or test_split should exist in the dataset dict. "
+            f"val_split was {val_split}. "
+            f"test_split was {test_split}. "
+            f"DatasetDict keys were {dataset.keys()}"
         )
 
     # Scenario 3: a dataset dict w/ all three splits already

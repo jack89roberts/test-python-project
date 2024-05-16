@@ -44,7 +44,7 @@ def main():
     args = parser.parse_args()
 
     # Read in config from yaml, initialise alt config
-    with open(args.configfile, "r") as f:
+    with open(args.configfile) as f:
         config_dict = yaml.safe_load(f)
     alt_config = None
 

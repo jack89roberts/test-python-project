@@ -157,7 +157,7 @@ def create_top_config(
         template_path: path to config template location
         config_save_path: path to save the config
     """
-    with open(template_path, "r") as f:
+    with open(template_path) as f:
         bin_config = yaml.safe_load(f)
 
     bin_config["dataset_names"] = dataset_name
@@ -215,7 +215,7 @@ def main():
     args = parser.parse_args()
 
     # read config yaml
-    with open(args.configfile, "r") as f:
+    with open(args.configfile) as f:
         config_dict = yaml.safe_load(f)
 
     # check for visual genome

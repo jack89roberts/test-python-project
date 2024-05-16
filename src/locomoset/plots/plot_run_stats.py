@@ -40,7 +40,7 @@ def plot_scores_vs_val(
         if v > np.mean(list(val_acc.values())) - 3 * np.var(list(val_acc.values()))
     }
     metric_scores_no_outliers = {
-        model: metric_scores[model] for model in val_acc_no_outliers.keys()
+        model: metric_scores[model] for model in val_acc_no_outliers
     }
     title_without_outliers = title + ", no outliers"
     utils.plot_results(
@@ -102,7 +102,7 @@ def plot_scores_vs_val_ranked(
         k: idx + 1 for idx, k in enumerate(sorted_val_acc_no_outliers.keys())
     }
     metric_scores_no_outliers = {
-        model: metric_scores[model] for model in val_acc_no_outliers.keys()
+        model: metric_scores[model] for model in val_acc_no_outliers
     }
     sorted_metric_scores_no_outliers = {
         k: v
@@ -142,9 +142,9 @@ def plot_score_vs_samples(
     """
     n_samps = {}
     met_scores = {}
-    for n_samp in metric_scores.keys():
+    for n_samp in metric_scores:
         for model in metric_scores[n_samp]:
-            if model not in met_scores.keys():
+            if model not in met_scores:
                 met_scores[model] = []
                 n_samps[model] = []
             met_scores[model].append(metric_scores[n_samp][model])
@@ -179,8 +179,8 @@ def plot_score_vs_samples(
     }
     n_samps = {}
     met_scores = {}
-    for n_samp in metric_scores.keys():
-        for model in val_acc_no_outliers.keys():
+    for n_samp in metric_scores:
+        for model in val_acc_no_outliers:
             if model not in met_scores.keys():
                 met_scores[model] = []
                 n_samps[model] = []
@@ -227,8 +227,8 @@ def plot_correlation_vs_samples(
 
     for idx, n_samp in enumerate(metric_scores.keys()):
         correlation_scores[idx] = spr(
-            [metric_scores[n_samp][model] for model in val_acc.keys()],
-            [val_acc[model] for model in val_acc.keys()],
+            [metric_scores[n_samp][model] for model in val_acc],
+            [val_acc[model] for model in val_acc],
         )[0]
         n_samps[idx] = n_samp
 
@@ -265,8 +265,8 @@ def plot_correlation_vs_samples(
 
     for idx, n_samp in enumerate(metric_scores.keys()):
         correlation_scores[idx] = spr(
-            [metric_scores[n_samp][model] for model in val_acc_no_outliers.keys()],
-            [val_acc_no_outliers[model] for model in val_acc_no_outliers.keys()],
+            [metric_scores[n_samp][model] for model in val_acc_no_outliers],
+            [val_acc_no_outliers[model] for model in val_acc_no_outliers],
         )[0]
         n_samps[idx] = n_samp
 

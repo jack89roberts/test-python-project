@@ -1,6 +1,6 @@
 import os
 import tempfile
-from typing import Callable
+from collections.abc import Callable
 
 import evaluate
 import numpy as np

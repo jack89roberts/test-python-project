@@ -167,7 +167,7 @@ class ModelMetricsExperiment:
 
     def perform_inference(
         self, inference_type: str | None
-    ) -> Tuple[ArrayLike, float] | Tuple[None, float]:
+    ) -> tuple[ArrayLike, float] | tuple[None, float]:
         """Perform inference to retrieve data necessary for metric score computation.
 
         Args:
@@ -198,7 +198,7 @@ class ModelMetricsExperiment:
         metric: Metric,
         model_input: ArrayLike | PreTrainedModel | None,
         dataset_input: ArrayLike | None,
-    ) -> Tuple[float, float] | Tuple[int, float]:
+    ) -> tuple[float, float] | tuple[int, float]:
         """Compute the metric score for a given metric. Not every metric requires
         either, or both, of the model_input or dataset_input but these are always input
         for a consistent pipeline (even if the input is None) and dealt with within the

@@ -32,7 +32,7 @@ def load_results(file_paths: list[str], n_samples=None) -> (list[dict], str):
 
     results = []
     for rf in file_paths:
-        with open(rf, "r") as f:
+        with open(rf) as f:
             this_file = json.load(f)
             if n_samples is not None and this_file["n_samples"] != n_samples:
                 continue
@@ -124,9 +124,9 @@ def parse_results_dataframes(
     if train_df is not None:
         for _, row in train_df.iterrows():
             if row.summary.get("eval/accuracy") is not None:
-                train_results[row.config["locomoset"].get("model_name")] = (
-                    row.summary.get("eval/accuracy")
-                )
+                train_results[
+                    row.config["locomoset"].get("model_name")
+                ] = row.summary.get("eval/accuracy")
 
     metric_results = {}
 
@@ -183,7 +183,7 @@ def load_imagenet_acc(path: str) -> dict[str, float]:
     Returns:
         dictionary of imagenet accuracy, {model: validation_accuracy}
     """
-    with open(path, "r") as f:
+    with open(path) as f:
         return yaml.safe_load(f)
 
 

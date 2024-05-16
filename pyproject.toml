@@ -125,4 +125,3 @@ unfixable = [
   "F841",   # Would remove unused variables
 ]
 flake8-unused-arguments.ignore-variadic-names = true  # allow unused *args/**kwargs
-isort.required-imports = ["from __future__ import annotations"]

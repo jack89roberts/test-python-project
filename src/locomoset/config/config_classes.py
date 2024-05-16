@@ -157,7 +157,7 @@ class Config(ABC):
         Returns:
             FineTuningConfig object.
         """
-        with open(path, "r") as f:
+        with open(path) as f:
             config = yaml.safe_load(f)
         return cls.from_dict(config=config)
 
@@ -273,7 +273,7 @@ class TopLevelConfig(ABC):
         Returns:
             TopLevelConfig object.
         """
-        with open(path, "r") as f:
+        with open(path) as f:
             config = yaml.safe_load(f)
         return cls.from_dict(config=config, config_type=config_type)
 
@@ -344,9 +344,10 @@ class TopLevelConfig(ABC):
             else:
                 sweep_dict[config_arg] = [copy(getattr(self, toplevel_arg))]
 
-        sweep_dict_keys, sweep_dict_vals = zip(*sweep_dict.items())
+        sweep_dict_keys, sweep_dict_vals = zip(*sweep_dict.items(), strict=False)
         param_sweep_dicts = [
-            dict(zip(sweep_dict_keys, v)) for v in product(*list(sweep_dict_vals))
+            dict(zip(sweep_dict_keys, v, strict=False))
+            for v in product(*list(sweep_dict_vals))
         ]
 
         # argument in TopLevelMetricsConfig to keep unchanged in MetricsConfig
