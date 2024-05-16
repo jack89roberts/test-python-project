@@ -1,0 +1,15 @@
+# Changes here will be overwritten by Copier
+_commit: 201a2ea
+_src_path: gh:alan-turing-institute/python-project-template
+backend: hatch
+coc: their_coc
+email: jroberts@turing.ac.uk
+full_name: Jack Roberts
+license: MIT
+min_python_version: '3.10'
+org: jack89roberts
+project_name: test-python-project
+project_short_description: Testing REG Python project template
+python_name: locomoset
+typing: loose
+url: https://github.com/jack89roberts/test-python-project
